@@ -46,12 +46,13 @@ export class Scene extends Container{
        
          //panel de puntos
         const puntos: Puntos =new Puntos();
+        puntos.textos("5/12 Blancos acertados","3000 Monedas obtenidas");
         puntos.scale.set(0.5);
         puntos.x=posRelX-5;
         puntos.y=posRelY+250;
         this.addChild(puntos);
 
-        //panel de puntos
+        //panel de mandos
         const mandos: Mandos =new Mandos();
         mandos.scale.set(0.3);
         mandos.x=posRelX+45;

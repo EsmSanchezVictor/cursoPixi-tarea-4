@@ -1,50 +1,69 @@
 import { Container, Sprite, Texture } from "pixi.js";
+import { Puntos } from "../game/Puntos";
 
 
 export class Button extends Container {
 
-    private adelante: Texture;
-    private spr:Sprite;
-   
+    private boton: Texture;
+    private sprBoton: Sprite;
+    private clase: String;
 
-    constructor(adelante: Texture) {
+
+
+    constructor(boton: Texture, clase: String) {
 
         super();
-        this.adelante = adelante;
-       
-        this.spr = Sprite.from(adelante);
-       // this.spr.anchor.set(0.5);
-        this.addChild(this.spr);
-       
-        this.spr.on("mousedown",this.onMouseDown,this);
-        this.spr.on("mouseup",this.onMouseUp,this);
-        this.spr.on("mouseover",this.onMouseOver, this);
-        this.spr.on("mouseout",this.onMouseOut, this); 
-        this.spr.interactive=true;
+        this.boton = boton;
+        this.clase = clase;
+
+        this.sprBoton = Sprite.from(boton);
+
+
+        // this.spr.anchor.set(0.5);
+        this.addChild(this.sprBoton);
+
+
+
+        this.sprBoton.on("mouseup", this.onMouseUp, this);
+        this.sprBoton.on("mouseover", this.onMouseOver, this);
+        this.sprBoton.on("mouseout", this.onMouseOut, this);
+        this.sprBoton.interactive = true;
 
         //Textura
-        this.spr.texture=this.adelante;
+        this.sprBoton.texture = this.boton;
     }
 
-    private onMouseDown():void{
-        console.log("mouse down");
-      
+
+    private onMouseUp(): void {
+
+        const textoBoton: Puntos = new Puntos();
+        if (this.clase == "adelante") {
+            this.emit("buttonCLick")
+            console.log("Click Adelante");
+            textoBoton.textos("Proximo nivel", "Exitos");
+            this.addChild(textoBoton);
+        } else if (this.clase == "atras") {
+            this.emit("buttonCLick")
+            console.log("Click Atras");
+
+        } else if (this.clase == "repetir") {
+            this.emit("buttonCLick")
+            console.log("Click Repetir");
+
+        } else if (this.clase == "home") {
+            this.emit("buttonCLick")
+            console.log("Click Home");
+        }
+    }
+
+    private onMouseOver(): void {
+        this.sprBoton.angle = 10;
+
 
     }
-    private onMouseUp():void{
-        this.emit("buttonCLick")
-        //console.log("Here out button does something!");
+    private onMouseOut(): void {
+        this.sprBoton.angle = 0;
 
-    }
-
-    private onMouseOver():void{
-        this.spr.angle=10;
-        console.log("mouse entre");
-
-    }
-    private onMouseOut():void{
-        this.spr.angle=0;
-        console.log("mouse exit");
 
     }
 
