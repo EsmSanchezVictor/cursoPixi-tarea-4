@@ -1,5 +1,5 @@
-import { Container, Sprite, Texture } from "pixi.js";
-import { Puntos } from "../game/Puntos";
+import { Container, Sprite, Text, Texture } from "pixi.js";
+
 
 
 export class Button extends Container {
@@ -7,7 +7,7 @@ export class Button extends Container {
     private boton: Texture;
     private sprBoton: Sprite;
     private clase: String;
-
+    public textBase: Text;
 
 
     constructor(boton: Texture, clase: String) {
@@ -15,13 +15,15 @@ export class Button extends Container {
         super();
         this.boton = boton;
         this.clase = clase;
-
+        this.textBase = new Text("", { fontSize: 45, fill: 0x00e000, fontFamily: "Comic Sans MS" });
+ 
         this.sprBoton = Sprite.from(boton);
 
 
         // this.spr.anchor.set(0.5);
         this.addChild(this.sprBoton);
-
+        this.textBase.position.set(20,280);
+        this.addChild(this.textBase);
 
 
         this.sprBoton.on("mouseup", this.onMouseUp, this);
@@ -32,29 +34,32 @@ export class Button extends Container {
         //Textura
         this.sprBoton.texture = this.boton;
     }
+  
 
 
     private onMouseUp(): void {
 
-        const textoBoton: Puntos = new Puntos();
+     if(this.textBase.text==""){ 
         if (this.clase == "adelante") {
             this.emit("buttonCLick")
-            console.log("Click Adelante");
-            textoBoton.textos("Proximo nivel", "Exitos");
-            this.addChild(textoBoton);
+            this.textBase.text = "Proximo Nivel";
         } else if (this.clase == "atras") {
             this.emit("buttonCLick")
-            console.log("Click Atras");
-
+            this.textBase.text = "Anterior Nivel";
         } else if (this.clase == "repetir") {
             this.emit("buttonCLick")
-            console.log("Click Repetir");
-
+            this.textBase.text = "Repetir Nivel";
         } else if (this.clase == "home") {
             this.emit("buttonCLick")
-            console.log("Click Home");
+            this.textBase.text = "Menu principal";
         }
+    }else {
+        this.emit("buttonCLick")
+        this.textBase.text = "";
     }
+        
+    }
+    
 
     private onMouseOver(): void {
         this.sprBoton.angle = 10;

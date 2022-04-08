@@ -6,6 +6,7 @@ private textMonedas: Text;
 
 
 
+
     constructor(){
         super();
       
@@ -35,17 +36,17 @@ private textMonedas: Text;
             monedas.scale.set(0.5,0.5);
 
         this.textBlancos= new Text("hello word",{fontSize: 40,fill:0x00e000, fontFamily:"Comic Sans MS"});
-       // this.textBlancos.text="5/12 Blancos acertados";
+        this.textBlancos.text="5/12 Blancos acertados";
         this.textBlancos.scale.set(1);
         this.textBlancos.position.set(400,70);
         
         
         this.textMonedas= new Text("hello word",{fontSize: 40,fill:0x00e000, fontFamily:"Comic Sans MS"});
-        //this.textMonedas.text="3000 Monedas obtenidas";
+        this.textMonedas.text="3000 Monedas obtenidas";
         this.textMonedas.scale.set(1);
         this.textMonedas.position.set(330,180);
 
-   
+       
 
         
         
@@ -69,27 +70,24 @@ private textMonedas: Text;
         
     }
 
-   public textos(blancos:string,puntos:string){
+   /*public textos(tBlancos:string){
  
-        this.textMonedas.text=puntos;
-        this.textBlancos.scale.set(1);
-        this.textBlancos.position.set(400,70);
-        this.textBlancos.text=blancos;
-        this.textMonedas.scale.set(1);
-        this.textMonedas.position.set(330,180);
+    
+   
+        
+        this.textBase.text=tBlancos;
+        this.textBase.scale.set(1);
+        this.textBase.position.set(630,180);
 
-        this.addChild(this.textBlancos);
-        this.addChild(this.textMonedas);
-
-        this.textMonedas.toGlobal(new Point()); 
-	    this.textMonedas.parent.toGlobal(this.textMonedas.position);
-        this.textBlancos.toGlobal(new Point()); 
-	    this.textBlancos.parent.toGlobal(this.textBlancos.position);
+        this.addChild(this.textBase);
+        
+        this.textBase.toGlobal(new Point()); 
+	    this.textBase.parent.toGlobal(this.textBase.position);
 
     
       
         
-    }
+    } */
   /*  private onKeyDown(e:KeyboardEvent):void{
         console.log("key pressed! ",e.code);
         this.textBlancos.text="key pressed "+e.code;

@@ -40,6 +40,7 @@ export class Mandos extends Container {
         this.addChild(this.atras);
         this.addChild(this.repetir);
         this.addChild(this.home);
+        
      
 
 

@@ -5,6 +5,7 @@ import { Nivel } from "../game/Nivel"; // mensaje de estado de nivel
 import { Puntos } from "../game/Puntos"; // cantidad de puntos y objetivos obtiendos 
 import { Mandos } from "..//game/Mandos";//  botones de control
 
+
 export class Scene extends Container{
 
     constructor(){
@@ -46,19 +47,20 @@ export class Scene extends Container{
        
          //panel de puntos
         const puntos: Puntos =new Puntos();
-        puntos.textos("5/12 Blancos acertados","3000 Monedas obtenidas");
+        //puntos.textos("5/12 Blancos ---acertados","3000 Monedas ---obtenidas");
         puntos.scale.set(0.5);
         puntos.x=posRelX-5;
         puntos.y=posRelY+250;
         this.addChild(puntos);
-
+               
         //panel de mandos
         const mandos: Mandos =new Mandos();
         mandos.scale.set(0.3);
         mandos.x=posRelX+45;
         mandos.y=posRelY+355;
         this.addChild(mandos);
-
+  
+       
   
         //text
 
